@@ -1,0 +1,55 @@
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[status]
+	relativePaths = false
+[core]
+	excludesfile = </Path/to/home/directory/.gitignore>
+	pager = less -FRSX
+	ignorecase = false
+[alias]
+	d  = diff
+	dc = diff --cached
+	lc = log ORIG_HEAD.. --stat --no-merges
+	gl = log --decorate --stat --graph --pretty=format:'%C(yellow)%h%Creset (%ar - %Cred%an%Creset), %s%n' 
+	st = status -sb
+	serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
+	prune-all = !git remote | xargs -n 1 git remote prune
+	whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+	whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+[user]
+	name = Graham Weldon
+	email = graham@grahamweldon.com
+	signingkey = BA6B4CC8
+[github]
+	user = predominant
+[credential]
+	helper = osxkeychain
+[merge]
+	tool = opendiff
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[hub]
+	host = github.rakops.com
+[gpg]
+	program = /usr/local/bin/gpg
+[commit]
+	gpgsign = true
+
+[includeIf "gitdir:~/Projects/personal/"]
+	path = ~/Projects/personal/.gitconfig.inc
